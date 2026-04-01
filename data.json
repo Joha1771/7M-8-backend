@@ -16,7 +16,7 @@
       "category": "Computers",
       "price": 1399.99,
       "description": "A gaming laptop with a high-refresh-rate display and dedicated GPU for smooth gaming experience.",
-      "image": "http://localhost:5000/images/cs9plkdpq3ghb2qjr420.jpg",
+      "image": "https://sevenm-8-backend.onrender.com/images/cs9plkdpq3ghb2qjr420.jpg",
       "stock": 20,
       "rating": 4.7
     },
@@ -26,7 +26,7 @@
       "category": "Computers",
       "price": 499.99,
       "description": "An affordable desktop PC, perfect for basic computing and everyday use.",
-      "image": "http://localhost:5000/images/cshnbkrvgbkipf21j9bg.jpg",
+      "image": "https://sevenm-8-backend.onrender.com/images/cshnbkrvgbkipf21j9bg.jpg",
       "stock": 90,
       "rating": 4.1
     },
@@ -36,7 +36,7 @@
       "category": "animal",
       "price": 2323,
       "description": "dadsa",
-      "image": "http://localhost:5000/images/image-1770201570891-738508108.jfif",
+      "image": "https://sevenm-8-backend.onrender.com/images/image-1770201570891-738508108.jfif",
       "stock": 343,
       "rating": 4
     },
@@ -46,7 +46,7 @@
       "category": "fruits",
       "price": 4332,
       "description": "432",
-      "image": "http://localhost:5000/images/image-1770374547744-353664211.jpg",
+      "image": "https://sevenm-8-backend.onrender.com/images/image-1770374547744-353664211.jpg",
       "stock": 34,
       "rating": 4
     },
@@ -56,7 +56,7 @@
       "category": "Computers",
       "price": 543,
       "description": "sdf",
-      "image": "http://localhost:5000/images/image-1770378751555-411145103.jpg",
+      "image": "https://sevenm-8-backend.onrender.com/images/image-1770378751555-411145103.jpg",
       "stock": 343,
       "rating": 4
     }
