@@ -68,9 +68,9 @@ app.get("/products/:id", (req, res) => {
   res.json({ message: "Success", data: product });
 });
 
-app.post("/products", authenticateToken, upload.single("image"), (req, res) => {
+app.post("/products", authenticateToken, (req, res) => {
   let { name, category, price, description, stock, rating } = req.body;
-  const image = req.file ? `${BASE_URL}/images/${req.file.filename}` : null; // Save image path if file was uploaded
+  const image = req.body.imageUrl || null;
 
   console.log(`req.body`, req.body);
   price = parseFloat(price);
@@ -140,43 +140,38 @@ app.post("/products", authenticateToken, upload.single("image"), (req, res) => {
 });
 
 // Update an existing product
-app.patch(
-  "/products/:id",
-  authenticateToken,
-  upload.single("image"),
-  (req, res) => {
-    const productId = parseInt(req.params.id);
-    let product = products.find((p) => p.id === productId);
-    if (!product) return res.status(404).json({ message: "Product not found" });
+app.patch("/products/:id", authenticateToken, (req, res) => {
+  const productId = parseInt(req.params.id);
+  let product = products.find((p) => p.id === productId);
+  if (!product) return res.status(404).json({ message: "Product not found" });
 
-    // Extract fields
-    const { name, category, price, description, stock, rating } = req.body;
-    const image = req.file ? `/images/${req.file.filename}` : product.image;
+  // Extract fields
+  const { name, category, price, description, stock, rating } = req.body;
+  const image = req.file ? `/images/${req.file.filename}` : product.image;
 
-    // Update product fields
-    product = {
-      ...product,
-      name: name || product.name,
-      category: category || product.category,
-      price: price ? parseFloat(price) : product.price,
-      description: description || product.description,
-      image,
-      stock: stock ? parseInt(stock) : product.stock,
-      rating: rating ? parseFloat(rating) : product.rating,
-    };
+  // Update product fields
+  product = {
+    ...product,
+    name: name || product.name,
+    category: category || product.category,
+    price: price ? parseFloat(price) : product.price,
+    description: description || product.description,
+    image,
+    stock: stock ? parseInt(stock) : product.stock,
+    rating: rating ? parseFloat(rating) : product.rating,
+  };
 
-    // Replace product in array and save
-    const productIndex = products.findIndex((p) => p.id === productId);
-    products[productIndex] = product;
+  // Replace product in array and save
+  const productIndex = products.findIndex((p) => p.id === productId);
+  products[productIndex] = product;
 
-    fs.writeFileSync(
-      "./data.json",
-      JSON.stringify({ products, orders, admins }, null, 2),
-    );
+  fs.writeFileSync(
+    "./data.json",
+    JSON.stringify({ products, orders, admins }, null, 2),
+  );
 
-    res.json({ message: "Product updated successfully", data: product });
-  },
-);
+  res.json({ message: "Product updated successfully", data: product });
+});
 
 // Delete a product
 app.delete("/products/:id", authenticateToken, (req, res) => {
