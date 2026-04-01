@@ -6,7 +6,7 @@
       "category": "Computers",
       "price": 1200,
       "description": "A powerful desktop computer with the latest CPU, ideal for gaming and heavy-duty tasks.",
-      "image": "/images/image-1770382251582-958100315.webp",
+      "image": "https://sevenm-8-backend.onrender.com/images/image-1770382251582-958100315.webp",
       "stock": 50,
       "rating": 4.8
     },
