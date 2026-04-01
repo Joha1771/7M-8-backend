@@ -1,0 +1,91 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Ahmad",
+      "category": "Computers",
+      "price": 1200,
+      "description": "A powerful desktop computer with the latest CPU, ideal for gaming and heavy-duty tasks.",
+      "image": "/images/image-1770382251582-958100315.webp",
+      "stock": 50,
+      "rating": 4.8
+    },
+    {
+      "id": 4,
+      "name": "Gaming Laptop with High FPS",
+      "category": "Computers",
+      "price": 1399.99,
+      "description": "A gaming laptop with a high-refresh-rate display and dedicated GPU for smooth gaming experience.",
+      "image": "http://localhost:5000/images/cs9plkdpq3ghb2qjr420.jpg",
+      "stock": 20,
+      "rating": 4.7
+    },
+    {
+      "id": 7,
+      "name": "Entry-Level Desktop Computer",
+      "category": "Computers",
+      "price": 499.99,
+      "description": "An affordable desktop PC, perfect for basic computing and everyday use.",
+      "image": "http://localhost:5000/images/cshnbkrvgbkipf21j9bg.jpg",
+      "stock": 90,
+      "rating": 4.1
+    },
+    {
+      "id": 10,
+      "name": "Shark",
+      "category": "animal",
+      "price": 2323,
+      "description": "dadsa",
+      "image": "http://localhost:5000/images/image-1770201570891-738508108.jfif",
+      "stock": 343,
+      "rating": 4
+    },
+    {
+      "id": 8,
+      "name": "Lemon",
+      "category": "fruits",
+      "price": 4332,
+      "description": "432",
+      "image": "http://localhost:5000/images/image-1770374547744-353664211.jpg",
+      "stock": 34,
+      "rating": 4
+    },
+    {
+      "id": 6,
+      "name": "Portable Laptop for Professionals",
+      "category": "Computers",
+      "price": 543,
+      "description": "sdf",
+      "image": "http://localhost:5000/images/image-1770378751555-411145103.jpg",
+      "stock": 343,
+      "rating": 4
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "address": "123 Main St, Springfield, IL",
+      "date": "2023-11-01",
+      "status": "Completed",
+      "items": [
+        {
+          "productId": 1,
+          "quantity": 1
+        },
+        {
+          "productId": 2,
+          "quantity": 2
+        }
+      ],
+      "total": 199.99
+    }
+  ],
+  "admins": [
+    {
+      "id": 1,
+      "username": "admin",
+      "email": "johndoe@example.com",
+      "password": "$2a$12$3aXsIBbnjO/dkF9omAN9VOs4rED0bda.TSRiD4O4FmqxTBjjdN4hi"
+    }
+  ]
+}
