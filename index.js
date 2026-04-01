@@ -7,8 +7,13 @@ const multer = require("multer");
 const { products, admins, orders } = require("./data.json");
 const { authenticateToken } = require("./auth");
 const fs = require("fs");
-
+const path = require("path");
 const app = express();
+// После const app = express();
+const imagesDir = path.join(__dirname, "public/Images");
+if (!fs.existsSync(imagesDir)) {
+  fs.mkdirSync(imagesDir, { recursive: true });
+}
 app.use(express.json());
 
 const BASE_URL = process.env.BASE_URL || "http://localhost:5000";
@@ -95,11 +100,9 @@ app.post("/products", authenticateToken, upload.single("image"), (req, res) => {
     return res.status(400).json({ message: "Image file is required" });
   }
   if (typeof stock !== "number" || stock < 0) {
-    return res
-      .status(400)
-      .json({
-        message: "Invalid 'stock' field, must be a non-negative number",
-      });
+    return res.status(400).json({
+      message: "Invalid 'stock' field, must be a non-negative number",
+    });
   }
   if (typeof rating !== "number" || rating < 0 || rating > 5) {
     return res
@@ -202,11 +205,9 @@ app.post("/orders", (req, res) => {
 
   // Validation for 'items'
   if (!Array.isArray(items) || items.length === 0) {
-    return res
-      .status(400)
-      .json({
-        message: "Invalid 'items' field, it should be a non-empty array.",
-      });
+    return res.status(400).json({
+      message: "Invalid 'items' field, it should be a non-empty array.",
+    });
   }
 
   for (const item of items) {
@@ -214,11 +215,9 @@ app.post("/orders", (req, res) => {
       typeof item.productId !== "number" ||
       !products.find((p) => p.id === item.productId)
     ) {
-      return res
-        .status(400)
-        .json({
-          message: `Invalid 'productId' in items: ${item.productId} does not exist.`,
-        });
+      return res.status(400).json({
+        message: `Invalid 'productId' in items: ${item.productId} does not exist.`,
+      });
     }
     if (typeof item.quantity !== "number" || item.quantity <= 0) {
       return res
@@ -229,20 +228,16 @@ app.post("/orders", (req, res) => {
 
   // Validation for 'address'
   if (typeof address !== "string" || address.trim() === "") {
-    return res
-      .status(400)
-      .json({
-        message: "Invalid 'address' field, it should be a non-empty string.",
-      });
+    return res.status(400).json({
+      message: "Invalid 'address' field, it should be a non-empty string.",
+    });
   }
 
   // Optional validation for 'date' (if provided)
   if (deliveryDate && isNaN(Date.parse(deliveryDate))) {
-    return res
-      .status(400)
-      .json({
-        message: "Invalid 'date' field, it should be a valid date string.",
-      });
+    return res.status(400).json({
+      message: "Invalid 'date' field, it should be a valid date string.",
+    });
   }
 
   // Calculate the total order amount
